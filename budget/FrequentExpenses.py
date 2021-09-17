@@ -1,16 +1,18 @@
-from . import Expense
 import collections
 import matplotlib.pyplot as plt
+from . import Expense
 
-Expenses = Expense.Expenses()
-Expenses.read_expenses('data/spending_data.csv')
+expenses = Expense.Expenses()
+expenses.read_expenses('data/spending_data.csv')
+
 spending_categories = []
-for Expense in Expenses.list:
-        spending_categories.append(Expense.category)
+for expense in expenses.list:
+        spending_categories.append(expense.category)
 
 spending_counter = collections.Counter(spending_categories)
-
+print(spending_counter)
 top5 = spending_counter.most_common(5)
+print("Number of categories = " + str(spending_counter.__len__()))
 
 result = top5
 
